@@ -1,0 +1,59 @@
+Simulation and Modeling(BIT354CO)
+
+Unit 1: Concept of Simulation (6 hours)
+    1. Introduction
+    2. The System
+    3. Continuous and Discrete System
+    4. System Simulation
+    5. Real Time Simulation
+    6. When to Use Simulation
+    7. Types of Simulation Model
+    8. Steps in Simulation Study
+    9. Phases of a Simulation Study
+    10. Advantages of Simulation
+    11. Limitations of the Simulation Technique
+    12. Areas of Application
+
+
+Unit 2: Monte Carlo Method (4 hours)
+    1. Monte Carlo Method
+    2. Normally Distributed Random Number
+    3. Monte Carlo Method vs Stochastic Simulation
+
+
+Unit 3: Simulation of Continuous System (5 hours)
+    1. Manual Simulation
+    2. A Pure Pursuit Problem
+    3. Queuing System
+    4. Markov Chains
+    5. Differential and Partial Differential Equations
+
+
+Unit 4: Random Numbers (10 hours)
+    1. Random Numbers
+    2. Random Number Tables
+    3. Pseudo Random Number
+    4. Generation of Random Number
+    5. Mid-Square Random Number Generator
+    6. Qualities of an Efficient Random Number Generator
+    7. Testing Numbers for Randomness
+    8. Uniformity Test
+    9. Chi-Square Test
+    10. Testing for Auto-Correlation
+    11. Poker Test
+
+
+Unit 5: Analysis of Simulation Output (10 hours)
+    1. Estimation Method
+    2. Simulation Run Statistics
+    3. Replication of Runs
+    4. Elimination of Initial Bias
+
+    
+Unit 6: Simulation Language (10 hours)
+    1. Basic Concept of Simulation Tools
+    2. Discrete System Modeling and Simulations
+    3. Continuous System Modeling and Simulations
+    4. Structural, Data, and Control Statements
+    5. Hybrid Simulations
+    6. Feedback System: Typical Applications

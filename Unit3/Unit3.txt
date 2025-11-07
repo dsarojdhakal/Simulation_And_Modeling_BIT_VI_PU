@@ -1,0 +1,179 @@
+Unit 3: Simulation of Continuous System
+
+
+    1. Manual Simulation
+
+        - Manual simulation means performing the whole simulation process by hand, 
+            without using any computer or software.
+        - It helps to understand how a system behaves step by step in a simple and clear way
+        - Mostly it is used when the system is small or when learning the basic idea of simulation.
+        - Saves time in the early stages when the model is not yet ready for programming.
+        - It is done using tables, charts, and random number tables to represent system activities.
+        - It helps to check whether the logic and flow of the model are correct before computer simulation.
+        - Useful for testing ideas and assumptions about how the system works.
+        - The general process includes defining variables, assigning random numbers, 
+            simulating events one by one, and recording results.
+        - The results help to see how the system performs and where improvements are needed.
+        - Becomes difficult and time-consuming when the system grows large or complex.
+        - It is commonly used in classrooms, training sessions, and simple process studies 
+            to build basic understanding.
+
+    2. A Pure Pursuit Problem
+
+        - A pure pursuit problem shows how one object (called the pursuer) moves to catch 
+            another moving object (called the target).
+        - The pursuer always moves directly toward the current position of the target.
+        - The direction of movement changes continuously as the target moves.
+        - It is a common example used to study continuous system simulation.
+        - The target and pursuer both move with known speeds and directions.
+        - The position of each object changes continuously with time, making it a continuous system.
+        - The path of the pursuer is curved because it keeps adjusting its direction toward the target.
+        - The simulation helps understand how long it takes for the pursuer to catch the target.
+        - The process includes dividing time into small intervals and calculating the new positions step by step.
+        - Differential equations are often used to represent their changing positions.
+        - Useful in studying problems like missile chasing an aircraft or animal hunting another animal.
+        - It helps to understand motion control, prediction, and system behavior in real-time tracking situations.
+
+
+    3. Queuing System
+
+        Queuing system studies waiting lines where customers or jobs wait for service.
+        Useful to analyze system performance when resources are limited.
+        Examples: bank counters, toll booths, call centers, data networks.
+        It is Used in: banking systems, call centers, hospital reception,
+            telecommunication networks, production lines, and traffic systems.
+
+        Main parts of Queuing System are:
+            Arrival process (λ) – average rate of customer arrival.
+            Service mechanism (μ) – average rate at which service is provided.
+            Number of servers (s) – total servers available.
+            System capacity (K) – maximum customers in system.
+            Average waiting time (w)
+
+        Basic equations:
+            Utilization factor: ρ = λ / (s × μ)
+            Average number in system: L = λ × W (Little’s Law)
+            Total service rate of the system = 𝑠 × 𝜇
+
+        Queuing System Types: M/M/1 and M/M/s
+
+        M/M/1 Queue – Single Server Model
+            M/M/1 stands for:
+                M → Markovian (Poisson) arrival process (random arrivals with rate λ)
+                M → Markovian (Exponential) service time (average rate μ)
+                1 → Single server
+            Only one server provides service.
+            Customers arrive randomly (Poisson process).
+            Service time is exponentially distributed.
+            Queue discipline: usually First Come, First Served (FCFS).
+
+            ρ = λ / μ                # Utilization factor
+            L = ρ / (1 - ρ)          # Average number in system
+            Lq = ρ^2 / (1 - ρ)       # Average number in queue
+            W = 1 / (μ - λ)          # Average time in system
+            Wq = λ / [μ * (μ - λ)]   # Average waiting time in queue
+            Condition for stability: λ < μ
+
+
+        M/M/s Queue – Multi-Server Model
+            M/M/s stands for:
+                M → Markovian (Poisson) arrival process
+                M → Markovian (Exponential) service time
+                s → Number of servers in the system
+            Multiple servers serve customers simultaneously.
+            Each server has the same service rate μ.
+            Customers wait only if all servers are busy.
+
+            ρ = λ / (s * μ)                                 # Utilization per server
+            P0 = [ Σ (from n=0 to s-1) [ (λ/μ)^n / n! ] 
+                + [ (λ/μ)^s / (s! * (1 - ρ)) ] ]^(-1)       # Probability that system is empty
+            Lq = [ P0 * (λ/μ)^s * ρ ] / [ s! * (1 - ρ)^2 ]  # Average number in queue
+            L = Lq + (λ / μ)                                # Average number in system
+            Wq = Lq / λ                                     # Average waiting time in queue
+            W = Wq + (1 / μ)                                # Average time in system
+            Condition for stability: λ < s * μ
+
+        Performance Measures
+            L  = Average number of customers in the system
+            Lq = Average number of customers waiting in queue
+            W  = Average time a customer spends in system
+            Wq = Average waiting time before service
+            ρ  = Server utilization
+
+
+
+
+    4 Markov Chains
+        Markov chains model systems moving between states over time, 
+        where the next state depends only on the current state.
+        Each state represents a condition of the system, like   
+            a server being idle, 
+            busy, or 
+            the number of customers in a queue.
+        Transition probability P(i, j) is the chance that the system moves from state i to state j 
+            in one step.
+        Retention (staying in the same state) happens when the system remains in state i, 
+            with probability P(i, i).
+        Gain occurs when the system moves to a higher state (for example, number of customers increases), 
+            and loss occurs when it moves to a lower state (number of customers decreases).
+        All transition probabilities (retention, gain, loss) are organized in a transition probability 
+            matrix, where rows represent the current state and columns represent the next state. 
+
+            Each row always sums to 1.
+
+        Markov chains can work in two ways: 
+            discrete-time, where the system changes at regular steps, or 
+            continuous-time, where changes can happen anytime.
+        Steady-state probabilities tell us how the system behaves in the long run, 
+            like how often a server is busy or how many customers are usually in the queue.
+        To simulate a Markov chain, 
+            we start from an initial state, 
+            use random numbers to decide if the system stays in the 
+                same state (retention), 
+                moves up (gain), or 
+                moves down (loss), 
+            update the state, and 
+            repeat this process over time.
+        This method helps us study real systems such as 
+            queues in banks, 
+            inventory in stores, 
+            reliability of machines, or 
+            traffic in networks.
+
+
+3 Differential and Partial Differential Equations
+
+    Differential equations describe how a system changes continuously with time or space.
+    They show the relationship between a variable and its rate of change.
+    In simulation, they help model real-world systems where behavior changes smoothly over time.
+    In continuous system simulation equations are solved step by step to estimate how variables change over time.
+    Euler’s Method and Runge–Kutta Method are commonly used for numerical solutions.
+    The results show how the system behaves dynamically and help in predicting, controlling, 
+        and improving real-world performance.
+    Such equations are widely applied in engineering, physics, biology, economics, 
+        and computer modeling where exact analytical solutions are difficult to find.
+
+    Ordinary Differential Equations (ODEs) 
+        It deal with systems that depend on a single independent variable, usually time.
+        They use ordinary derivatives like dy/dt.
+        These equations are simpler to solve compared to partial differential equations.
+        They describe systems that change only with time, such as:
+            population growth, 
+            radioactive decay, or 
+            charging of a capacitor.
+        Graphically, their solutions are one-dimensional curves (value vs. time).
+        Example: 
+            dx/dt=f(x,t), where x changes continuously with time t.
+
+    Partial Differential Equations (PDEs) 
+        IT deal with systems that depend on two or more independent variables, such as time and space.
+        They use partial derivatives like ∂u/∂t​ and ∂u/∂x​.
+        These equations are more complex and often require numerical or simulation-based methods to solve.
+        They describe systems that change over both time and space, such as:
+            heat conduction, 
+            fluid flow, or 
+            wave motion.
+        Graphically, PDE solutions form surfaces or fields showing variation across multiple dimensions.
+        Example: ∂u/∂t=D∂2u/∂x2 used in heat transfer problems.
+
+

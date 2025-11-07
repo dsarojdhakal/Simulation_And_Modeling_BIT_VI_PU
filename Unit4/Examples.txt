@@ -1,0 +1,164 @@
+Question 1 : Use the Linear Congruential Generator (LCG) to generate 10 random numbers.
+
+        Given:
+            a = 5, c = 3, m = 16, R0 = 7 (seed)
+            Formula: Rn+1 = (a × Rn + c) mod m
+
+        Solution:
+                Iteration 1:
+                    1. R1 = (5 × 7 + 3) mod 16 = (35 + 3) mod 16 = 38 mod 16 = 6
+                    2. Next seed = 6
+
+                Iteration 2:
+                    1. R2 = (5 × 6 + 3) mod 16 = (30 + 3) mod 16 = 33 mod 16 = 1
+                    2. Next seed = 1
+
+                Iteration 3:
+                    1. R3 = (5 × 1 + 3) mod 16 = (5 + 3) mod 16 = 8 mod 16 = 8
+                    2. Next seed = 8
+
+                Iteration 4:
+                    1. R4 = (5 × 8 + 3) mod 16 = (40 + 3) mod 16 = 43 mod 16 = 11
+                    2. Next seed = 11
+
+                Iteration 5:
+                    1. R5 = (5 × 11 + 3) mod 16 = (55 + 3) mod 16 = 58 mod 16 = 10
+                    2. Next seed = 10
+
+                Iteration 6:
+                    1. R6 = (5 × 10 + 3) mod 16 = (50 + 3) mod 16 = 53 mod 16 = 5
+                    2. Next seed = 5
+
+                Iteration 7:
+                    1. R7 = (5 × 5 + 3) mod 16 = (25 + 3) mod 16 = 28 mod 16 = 12
+                    2. Next seed = 12
+
+                Iteration 8:
+                    1. R8 = (5 × 12 + 3) mod 16 = (60 + 3) mod 16 = 63 mod 16 = 15
+                    2. Next seed = 15
+
+                Iteration 9:
+                    1. R9 = (5 × 15 + 3) mod 16 = (75 + 3) mod 16 = 78 mod 16 = 14
+                    2. Next seed = 14
+
+                Iteration 10:
+                    1. R10 = (5 × 14 + 3) mod 16 = (70 + 3) mod 16 = 73 mod 16 = 9
+                    2. Next seed = 9
+
+                10 Random Numbers Generated:
+                    R0 = 7, R1 = 6, R2 = 1, R3 = 8, R4 = 11, R5 = 10, R6 = 5, R7 = 12, R8 = 15, R9 = 14, R10 = 9
+
+
+Question 2: Use the Linear Congruential Generator (LCG) to generate 10 random numbers in the range [50,80].
+        
+        Given:
+            a = 7, c = 5, m = 18, R0 = 9 (seed)
+            Formula: Rn+1 = (a × Rn + c) mod m
+            Scaling formula: Y = 50 + (80 - 50) × (Rn / (m-1))
+
+        Solution:
+            Iteration 1:
+                1. R1 = (7 × 9 + 5) mod 18 = 68 mod 18 = 14
+                2. Normalize: 14 / 17 ≈ 0.8235
+                3. Scale: 50 + 30 × 0.8235 ≈ 74.71
+                4. Next seed = 14
+
+            Iteration 2:
+                1. R2 = (7 × 14 + 5) mod 18 = 103 mod 18 = 13
+                2. Normalize: 13 / 17 ≈ 0.7647
+                3. Scale: 50 + 30 × 0.7647 ≈ 72.94
+                4. Next seed = 13
+
+            Iteration 3:
+                1. R3 = (7 × 13 + 5) mod 18 = 96 mod 18 = 6
+                2. Normalize: 6 / 17 ≈ 0.3529
+                3. Scale: 50 + 30 × 0.3529 ≈ 60.59
+                4. Next seed = 6
+
+            Iteration 4:
+                1. R4 = (7 × 6 + 5) mod 18 = 47 mod 18 = 11
+                2. Normalize: 11 / 17 ≈ 0.6471
+                3. Scale: 50 + 30 × 0.6471 ≈ 69.41
+                4. Next seed = 11
+
+            Iteration 5:
+                1. R5 = (7 × 11 + 5) mod 18 = 82 mod 18 = 10
+                2. Normalize: 10 / 17 ≈ 0.5882
+                3. Scale: 50 + 30 × 0.5882 ≈ 67.65
+                4. Next seed = 10
+
+            Iteration 6:
+                1. R6 = (7 × 10 + 5) mod 18 = 75 mod 18 = 3
+                2. Normalize: 3 / 17 ≈ 0.1765
+                3. Scale: 50 + 30 × 0.1765 ≈ 55.29
+                4. Next seed = 3
+
+            Iteration 7:
+                1. R7 = (7 × 3 + 5) mod 18 = 26 mod 18 = 8
+                2. Normalize: 8 / 17 ≈ 0.4706
+                3. Scale: 50 + 30 × 0.4706 ≈ 64.12
+                4. Next seed = 8
+
+            Iteration 8:
+                1. R8 = (7 × 8 + 5) mod 18 = 61 mod 18 = 7
+                2. Normalize: 7 / 17 ≈ 0.4118
+                3. Scale: 50 + 30 × 0.4118 ≈ 62.35
+                4. Next seed = 7
+
+            Iteration 9:
+                1. R9 = (7 × 7 + 5) mod 18 = 54 mod 18 = 0
+                2. Normalize: 0 / 17 = 0
+                3. Scale: 50 + 30 × 0 = 50.00
+                4. Next seed = 0
+
+            Iteration 10:
+                1. R10 = (7 × 0 + 5) mod 18 = 5 mod 18 = 5
+                2. Normalize: 5 / 17 ≈ 0.2941
+                3. Scale: 50 + 30 × 0.2941 ≈ 58.82
+                4. Next seed = 5
+
+
+
+Question 3: Use the Mid-Square Method to generate 5 random numbers in the range [100,200].
+
+        Given:
+            Seed = 1234 (N = 4)
+            Scaling formula: Y = 100 + (200 - 100) × (X / 9999)
+            Where X = middle 4 digits of squared seed
+
+        Solution: 
+            Iteration 1:
+                1. Square the seed: 1234^2 = 1522756 → pad to 8 digits: 01522756
+                2. Extract middle 4 digits: 5227
+                3. Normalize: 5227 / 9999 ≈ 0.5227
+                4. Scale: 100 + 100 × 0.5227 ≈ 152.27
+                5. Next seed = 5227
+
+            Iteration 2:
+                1. Square the seed: 5227^2 = 27321529
+                2. Extract middle 4 digits: 3215
+                3. Normalize: 3215 / 9999 ≈ 0.3215
+                4. Scale: 100 + 100 × 0.3215 ≈ 132.15
+                5. Next seed = 3215
+
+            Iteration 3:
+                1. Square the seed: 3215^2 = 103360225 → pad to 8 digits: 103360225 (take middle 4 digits: 3360)
+                2. Normalize: 3360 / 9999 ≈ 0.3360
+                3. Scale: 100 + 100 × 0.3360 ≈ 133.60
+                4. Next seed = 3360
+
+            Iteration 4:
+                1. Square the seed: 3360^2 = 11289600
+                2. Extract middle 4 digits: 2896
+                3. Normalize: 2896 / 9999 ≈ 0.2896
+                4. Scale: 100 + 100 × 0.2896 ≈ 128.96
+                5. Next seed = 2896
+
+            Iteration 5:
+                1. Square the seed: 2896^2 = 8386816 → pad to 8 digits: 08386816
+                2. Extract middle 4 digits: 3868
+                3. Normalize: 3868 / 9999 ≈ 0.3868
+                4. Scale: 100 + 100 × 0.3868 ≈ 138.68
+                5. Next seed = 3868
+    
+        Random Numbers in [100,200]: 152.27, 132.15, 133.60, 128.96, 138.68

@@ -1,0 +1,128 @@
+
+Question 1: Single Server (M/M/1 Queue)
+            A bank counter serves customers at an average rate of 10 customers/hour (μ = 10).
+            Customers arrive at an average rate of 6 customers/hour (λ = 6).
+
+            Find:
+            1. System utilization (ρ)
+            2. Average number of customers in the system (L)
+            3. Average waiting time in the system (W)
+
+
+Question 2: Multi-Server (M/M/s Queue)
+            A call center has 3 operators (s = 3).
+            Each can handle 12 calls/hour (μ = 12),
+            and calls arrive at 25 per hour (λ = 25).
+
+            Find:
+            1. Server utilization (ρ)
+            2. Average number of customers being served at a time
+            3. What happens if one more operator is added?
+
+
+Question 3: Two Servers at Toll Booth (M/M/s Queue)
+            A toll booth has 2 servers, each serving 20 vehicles/hour (μ = 20).
+            Vehicles arrive at a rate of 30 per hour (λ = 30).
+
+            Find:
+            1. Server utilization.
+            2. Total service rate of the system
+            3. If arrival rate increases to 36 vehicles/hour, what is the new utilization?
+
+
+
+
+
+
+
+
+Question 1: Single Server (M/M/1 Queue)
+            A bank counter serves customers at an average rate of 10 customers/hour (μ = 10).
+            Customers arrive at an average rate of 6 customers/hour (λ = 6).
+
+            Find:
+            1. System utilization (ρ)
+            2. Average number of customers in the system (L)
+            3. Average waiting time in the system (W)
+
+    Solution:
+            ρ   = λ / μ
+                = 6 / 10
+                = 0.6
+
+            L   = ρ / (1 - ρ)
+                = 0.6 / (1 - 0.6)
+                = 0.6 / 0.4
+                = 1.5 customers
+
+            W   = L / λ
+                = 1.5 / 6
+                = 0.25 hours = 15 minutes
+
+        Final Answers:
+            ρ = 0.6
+            L = 1.5 customers
+            W = 0.25 hr (15 min)
+
+
+Question 2: Multi-Server (M/M/s Queue)
+            A call center has 3 operators (s = 3).
+            Each can handle 12 calls/hour (μ = 12),
+            and calls arrive at 25 per hour (λ = 25).
+
+            Find:
+            1. Server utilization (ρ)
+            2. Average number of customers being served at a time
+            3. What happens if one more operator is added?
+
+    Solution:
+            ρ   = λ / (s × μ)
+                = 25 / (3 × 12)
+                = 25 / 36
+                = 0.6944
+
+            Average number of busy servers = λ / μ
+                = 25 / 12
+                = 2.0833 servers
+
+            If one more operator is added (s = 4):
+            ρ(new) = 25 / (4 × 12)
+                = 25 / 48
+                = 0.5208
+
+            Final Answers:
+            ρ = 0.6944
+            Average busy servers = 2.0833
+            With one more operator, ρ(new) = 0.5208
+            (Result: Less waiting time, more idle capacity)
+
+
+Question 3: Two Servers at Toll Booth (M/M/2 Queue)
+            A toll booth has 2 servers, each serving 20 vehicles/hour (μ = 20).
+            Vehicles arrive at a rate of 30 per hour (λ = 30).
+
+            Find:
+            1. Server utilization (ρ)
+            2. Total service rate of the system
+            3. If arrival rate increases to 36 vehicles/hour, what is the new utilization?
+
+        Solution:
+            ρ   = λ / (s × μ)
+                = 30 / (2 × 20)
+                = 30 / 40
+                = 0.75
+
+            Total service rate = s × μ
+                            = 2 × 20
+                            = 40 vehicles/hour
+
+            If arrival rate increases to 36 vehicles/hour:
+            ρ(new)  = 36 / 40
+                    = 0.9
+
+            Final Answers:
+            ρ = 0.75
+            Total service rate = 40 vehicles/hour
+            ρ(new) = 0.9 (System becomes more congested)
+
+
