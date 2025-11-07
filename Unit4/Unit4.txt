@@ -156,7 +156,6 @@ Unit 4: Random Numbers
 
     4.5 MID-SQUARE RANDOM NUMBER GENERATOR
 
-        Definition:
         - The Mid-Square Method is a simple mathematical approach to generate pseudo-random numbers.
         - It was proposed by John von Neumann (1949).
         - The idea is to start with an initial number called a seed, square it, and extract the 
