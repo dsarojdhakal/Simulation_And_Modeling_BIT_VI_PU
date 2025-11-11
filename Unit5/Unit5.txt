@@ -1,0 +1,129 @@
+Unit 5: Analysis of Simulation Output
+
+    5.1 Estimation Method
+
+        - It is used to estimate population parameters from simulation outputs.
+        - Assumes observations are independent and identically distributed (IID).
+        - Based on central limit theorem to form confidence intervals.
+        - Works well when simulation outputs are not autocorrelated.
+
+        Steps / Mathematical Formulation:
+            1. Let x(i) be the observed value at time i, where i = 1 to n.
+            2. Calculate sample mean:
+            x̄ = (1/n) * Σ x(i)
+            3. Calculate sample variance:
+            s² = (1 / (n - 1)) * Σ (x(i) - x̄)²
+            4. Confidence interval for the population mean:
+                x̄ ± u(α/2) * (σ / √n)
+                Where:
+                    - u(α/2) = standard normal critical value for confidence level 1-α
+                    - σ = population standard deviation (or s if unknown)
+                    - n = number of observations
+            5. Interpretation: The interval represents the range in which the true mean is likely to lie with 1-α probability.
+
+        Example:
+            Observing n = 10 
+            independent outputs: 5, 7, 6, 8, 7, 6, 9, 5, 7, 8
+            Sample mean: x̄ = (5+7+6+8+7+6+9+5+7+8)/10 = 6.8
+            Sample variance: s² = Σ(x(i)-x̄)²/(n-1) = 1.51
+            95% CI: x̄ ± 1.96 * (√1.51 / √10) ≈ 6.8 ± 0.76 → [6.04, 7.56]
+
+
+
+
+
+    5.2 Simulation Run Statistics
+            
+            - In simulation, system output changes over time.
+            - Often, one output value affects the next — such data are called autocorrelated.
+            - For example, in a queue, the waiting time of one customer affects the next.
+            - Because of this, simulation results are not truly independent.
+            - Simulation Run Statistics is used to analyze such correlated and time-dependent data.
+
+            - Simulation Run Statistics is a method used to analyze the output of a simulation run where observations are dependent over time.
+            - It helps to determine performance measures like average waiting time, queue length, and utilization.
+            - It is useful when data are autocorrelated and cannot be treated as independent.
+            - The method aims to estimate steady-state behavior after the system becomes stable.
+
+        Some basic concept on Simulation Run Statistics
+            1. Autocorrelation
+            - Correlation between consecutive observations in time.
+            - Denoted by ρ(k), where k is the lag.
+            - Positive autocorrelation increases the variance of the sample mean.
+
+            2. Stationarity
+            - A process is stationary when its mean and variance remain constant over time.
+            - Non-stationary data (start-up phase) must be removed or minimized.
+
+            3. Steady State
+            - When the system output becomes stable after initial fluctuations.
+
+
+        Step-by-Step Procedure with Mathematical Expressions
+
+            Step 1: Collect simulation data
+                Let the simulation output produce n observations:
+                x(1), x(2), x(3), ..., x(n)
+
+                These may represent waiting times, queue lengths, or service times.
+
+            Step 2: Compute sample mean
+                x̄ = (1/n) * Σ x(i)
+                where x̄ = sample mean, n = total number of observations.
+
+            Step 3: Compute sample variance
+                s² = (1 / (n - 1)) * Σ (x(i) - x̄)²
+                This measures how much the values deviate from their mean.
+
+            Step 4: Compute lag-k autocorrelation
+                ρ(k) = Σ [(x(i) - x̄)(x(i+k) - x̄)] / Σ (x(i) - x̄)²
+                    for Numerator i = 1 to n - 1 
+                    for Denominator i = 1 to n 
+                This shows dependency between values that are k steps apart.
+
+            Step 5: Estimate true variance of sample mean (for correlated data)
+                Var(x̄) = (σ² / n) * (1 + 2Σ ρ(k))
+
+                where ρ(k) = autocorrelation at lag k
+                and the summation is over all significant lag values.
+                This formula shows that autocorrelation increases the variance of the sample mean, 
+                requiring longer simulations for accuracy.
+
+            Step 6: Construct confidence interval
+                Confidence interval gives the range where the true mean of the system lies:
+                CI = x̄ ± Z * sqrt(Var(x̄))
+                where Z = standard normal value (e.g., 1.96 for 95% confidence)
+
+            Step 7: Interpret results
+                - If the interval is narrow, estimates are precise.
+                - If wide, run the simulation longer to reduce variance.
+                - Observe if the system has reached a steady state before using results.
+
+        Example:
+            A single-server queue (M/M/1) is simulated for 15 customers. Waiting times (in minutes):
+            2, 4, 6, 5, 4, 7, 5, 6, 4, 5, 7, 6, 5, 6, 5
+
+            Step 1: Calculate sample mean
+                x̄ = 78 / 15 = 5.2
+
+            Step 2: Calculate sample variance
+                s² = (1 / 14) * Σ (x(i) - 5.2)²
+                s² ≈ 2.06
+
+            Step 3: Compute lag-1 autocorrelation
+                ρ(1) = Σ [(x(i) - 5.2)(x(i+1) - 5.2)] / Σ (x(i) - 5.2)²
+                ρ(1) ≈ 0.65
+
+            Step 4: Adjusted variance of mean
+                Var(x̄) = (s² / n) * (1 + 2ρ(1))
+                Var(x̄) = (2.06 / 15) * (1 + 1.3)
+                Var(x̄) = 0.27
+
+            Step 5: 95% Confidence Interval
+                CI = 5.2 ± 1.96 * sqrt(0.27)
+                CI = 5.2 ± 1.02
+                Confidence Interval: [4.18, 6.22]
+
+            Interpretation:
+            We are 95% confident that the true mean waiting time lies between 4.18 and 6.22 minutes.
+            Since autocorrelation is positive, the variance is slightly higher, so a longer simulation run would increase accuracy.

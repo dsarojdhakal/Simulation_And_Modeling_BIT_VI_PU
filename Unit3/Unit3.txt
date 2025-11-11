@@ -103,7 +103,7 @@ Unit 3: Simulation of Continuous System
 
 
 
-    4 Markov Chains
+    4. Markov Chains
         Markov chains model systems moving between states over time, 
         where the next state depends only on the current state.
         Each state represents a condition of the system, like   
