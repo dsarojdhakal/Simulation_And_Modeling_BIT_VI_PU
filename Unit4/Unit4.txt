@@ -421,6 +421,231 @@ Unit 4: Random Numbers
             7. Poker Test 
 
 
+    4.8 Uniformity Test
+
+        - The Uniformity Test is used to check whether random numbers are evenly spread over a given range, usually between 0 and 1.
+        - It helps to verify that every part of the range has almost the same chance of getting numbers.
+        - In other words, all intervals should contain approximately equal numbers of random values.
+        - This test is important because simulation results depend on how well random numbers represent real randomness.
+        - It ensures that random numbers are not biased toward a specific range.
+
+        Algorithm:
+            1. Generate a large set of random numbers (for example, 100 or 1000 numbers).
+            2. Divide the total range (0–1) into equal intervals, such as 0.0–0.1, 0.1–0.2, 0.2–0.3, etc.
+            3. Count how many random numbers fall into each interval (Observed frequency).
+            4. Calculate the Expected frequency using:
+                    Ei = N / k
+                where,
+                    N = total number of random numbers  
+                    k = number of intervals
+            5. Compare Observed and Expected frequencies.
+                If they are nearly equal, the numbers are said to be uniformly distributed.
+
+        Example:
+            Suppose we have 10 random numbers:
+            0.12, 0.17, 0.23, 0.31, 0.45, 0.47, 0.56, 0.69, 0.83, 0.91
+
+            Divide into 5 equal intervals:
+            (0.0–0.2), (0.2–0.4), (0.4–0.6), (0.6–0.8), (0.8–1.0)
+
+            Observed frequencies:
+            (0.0–0.2) → 2  
+            (0.2–0.4) → 2  
+            (0.4–0.6) → 2  
+            (0.6–0.8) → 2  
+            (0.8–1.0) → 2
+
+            Expected frequency:
+            Ei = N / k = 10 / 5 = 2 for each interval
+
+            All observed frequencies are equal to expected frequencies.
+            Hence, the numbers are uniformly distributed.
 
 
+
+
+    4.9 Chi-Square Test
+
+        - The Chi-Square Test is a statistical method used to check whether a set of random numbers follows a uniform distribution.  
+        - It compares how many numbers actually fall into each interval (observed) 
+            with how many were expected in a truly random case.
+        - The Chi-Square Test helps verify that random numbers are truly uniform.  
+        - If the test passes, it means the random number generator is performing well.
+
+
+        Algorithm/How It Works:
+            1. Divide the range of numbers (0 to 1) into equal intervals.  
+            2. Count how many numbers fall into each interval (Observed frequency = Oi).  
+            3. Calculate the expected frequency (Ei) for each interval:  
+
+                Ei = N / k  
+                where N = total numbers, k = number of intervals.  
+
+            4. Apply the formula:  
+
+                χ² = Σ((Oi - Ei)² / Ei)
+
+                This formula adds up the squared differences between observed and expected counts.
+
+            5. Compare the calculated χ² value with the table value from the Chi-Square distribution using (k - 1) degrees of freedom.  
+                - If calculated χ² ≤ table χ² → numbers are uniform.  
+                - If calculated χ² > table χ² → numbers are not uniform.
+
+
+    4.11 Poker Test
+
+        The Poker Test is a statistical test used to check whether a sequence of random numbers is truly random and independent. 
+        It is based on the frequency with which certain digit patterns occur within the numbers, similar to patterns found in a poker game. 
+        For example, a number may have: 
+            all different digits, 
+            one pair, 
+            two pairs, or 
+            three of the same digits.
+
+        - The main idea of the Poker Test is to see if the digits in random numbers appear in expected proportions.  
+        - If some patterns appear too often or too rarely, it means the numbers are not random.  
+        - The test uses the Chi-Square method to compare observed and expected frequencies of each pattern.  
+        - It helps to verify both the independence and randomness of generated numbers.
+
+        Steps/ methods to solve Pokers Test:
+            1. Divide the random numbers into equal-sized groups (for example, groups of 3 or 4 digits).  
+            2. Identify the pattern of digits in each group (such as all different, one pair, two pairs, etc.).  
+            3. Count how many numbers belong to each pattern — this gives the observed frequency (Oi).  
+            4. Calculate the expected frequency (Ei) using:  
+                    Ei = N × Pi  
+                where,  
+                    N = total numbers tested  
+                    Pi = theoretical probability of that pattern  
+            5. Compute Chi-Square value using:  
+                    χ² = Σ ((Oi - Ei)² / Ei)  
+            6. Compare χ² with the critical value from the Chi-Square table.  
+                     If χ² < χ²(table): accept that the numbers are random.  
+                     If χ² > χ²(table): reject randomness (numbers are dependent or biased).  
+
+        Algorithm:
+            1. Start  
+            2. Read the total number of random numbers (N).  
+            3. Divide the sequence into groups (like 3-digit or 4-digit numbers).  
+            4. For each group, determine its pattern:  
+                – All digits different  
+                – One pair  
+                – Two pairs  
+                – Three of a kind  
+                – Four of a kind  
+            5. Count how many numbers fall in each category (Oi).  
+            6. Calculate the theoretical probability (Pi) for each pattern.  
+            7. Find expected frequency (Ei = N × Pi).  
+            8. Compute the Chi-Square value using:  
+                χ² = Σ ((Oi - Ei)² / Ei)  
+            9. Compare χ² with the table value at a chosen significance level (like 0.05).  
+            10. If χ² is less than table value, accept randomness; otherwise, reject it.  
+            11. Stop.  
+
+
+
+        Example 1: Calculate probabilities and expected frequencies for Poker Test for Three-Digit Numbers
+
+            Expected Frequency = Total Number of Trials × Probability of the Outcome
+
+            All Different Digits:
+                Choose 3 different digits from 10 (0-9):C(10, 3)
+                Arrange 3 digits: 3!
+                Total: C(10, 3) × 3! = 120 × 6 = 720
+                Total number of possible three-digit combinations: 10^3 = 1000
+                Probability: 720 / 1000 = 0.72
+                Expected frequency: 0.72 × 1000 = 720
+
+            One Pair:
+                Choose 1 digit for the pair from 10: C(10, 1)
+                Choose 1 more digit from remaining 9: C(9, 1)
+                Arrange digits: 3! / (2! × 1!) = 3
+                Total: C(10, 1) × C(9, 1) × 3 = 10 × 9 × 3 = 270
+                Probability: 270 / 1000 = 0.27
+                Expected frequency: 0.27 × 1000 = 270
+
+            Three of a Kind:
+                Choose 1 digit for all three from 10: C(10, 1) = 10
+                Total combinations: 10
+                Probability: 10 / 1000 = 0.01
+                Expected frequency: 0.01 × 1000 = 10
+
+
+        Example 2: Calculate probabilities and expected frequencies for Poker Test for Four-Digit Numbers
+
+            Expected Frequency = Total Number of Trials × Probability of the Outcome
+
+            All Different Digits:
+                - Choose 4 different digits from 10 (0-9): C(10, 4)
+                - Arrange 4 digits: 4!
+                - Total combinations: C(10, 4) × 4! = 210 × 24 = 5040
+                - Total number of possible four-digit combinations: 10^4 = 10000
+                - Probability: 5040 / 10000 = 0.504
+                - Expected frequency: 0.504 × 10000 = 5040
+
+            One Pair:
+                - Choose 1 digit for the pair from 10: C(10, 1)
+                - Choose 2 remaining digits from 9: C(9, 2)
+                - Arrange digits: 4! / (2! × 1! × 1!) = 12
+                - Total combinations: C(10, 1) × C(9, 2) × 12 = 10 × 36 × 12 = 4320
+                - Probability: 4320 / 10000 = 0.432
+                - Expected frequency: 0.432 × 10000 = 4320
+
+            Two Pairs:
+                - Choose 2 digits for the pairs from 10: C(10, 2)
+                - Arrange pairs: 4! / (2! × 2!) = 6
+                - Total combinations: C(10, 2) × 6 = 45 × 6 = 270
+                - Probability: 270 / 10000 = 0.027
+                - Expected frequency: 0.027 × 10000 = 270
+
+            Three of a Kind:
+                - Choose 1 digit for three-of-a-kind from 10: C(10, 1)
+                - Choose 1 remaining digit from 9: C(9, 1)
+                - Arrange digits: 4! / (3! × 1!) = 4
+                - Total combinations: 10 × 9 × 4 = 360
+                - Probability: 360 / 10000 = 0.036
+                - Expected frequency: 0.036 × 10000 = 360
+
+            Four of a Kind:
+                - Choose 1 digit for all four from 10: C(10, 1) = 10
+                - Probability: 10 / 10000 = 0.001
+                - Expected frequency: 0.001 × 10000 = 10
+
+                
+
+    -->(**)Poker Test Probabilities for Random Numbers
+
+            2-Digit Numbers:
+                All Different Digits: Probability = 0.9
+                Both Digits Same: Probability = 0.1
+
+            3-Digit Numbers:
+                All Different Digits: Probability = 0.72
+                One Pair: Probability = 0.27
+                Three of a Kind: Probability = 0.01
+
+            4-Digit Numbers:
+                All Different Digits: Probability = 0.504
+                One Pair: Probability = 0.432
+                Two Pairs: Probability = 0.027
+                Three of a Kind: Probability = 0.036
+                Four of a Kind: Probability = 0.001
+
+            5-Digit Numbers:
+                All Different Digits: Probability = 0.3024
+                One Pair: Probability = 0.504
+                Two Pairs: Probability = 0.108
+                Three of a Kind: Probability = 0.072
+                Full House (Three + Pair): Probability = 0.009
+                Four of a Kind: Probability = 0.0045
+                Five of a Kind: Probability = 0.0001
+
+            6-Digit Numbers:
+                All Different Digits: Probability = 0.1512
+                One Pair: Probability = 0.324
+                Two Pairs: Probability = 0.216
+                Three of a Kind: Probability = 0.072
+                Full House (Three + Pair): Probability = 0.036
+                Four of a Kind: Probability = 0.009
+                Five of a Kind: Probability = 0.001
+                Six of a Kind: Probability = 0.00001
 

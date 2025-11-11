@@ -162,3 +162,239 @@ Question 3: Use the Mid-Square Method to generate 5 random numbers in the range 
                 5. Next seed = 3868
     
         Random Numbers in [100,200]: 152.27, 132.15, 133.60, 128.96, 138.68
+
+
+Question 4 (Uniformity Test) : Given random numbers:0.12, 0.17, 0.23, 0.31, 0.45, 0.47, 0.56, 0.69, 0.83, 0.91, 0.81, 0.82, 0.83, 0.53, 0.56, 0.58
+
+        Solution:
+
+            Step 1: Total numbers (N) = 16
+
+            Step 2: Divide the range (0–1) into 5 equal intervals:
+                0.0–0.2, 0.2–0.4, 0.4–0.6, 0.6–0.8, 0.8–1.0
+
+            Step 3: Count numbers in each interval (Observed frequency, Oi):
+
+                0.0–0.2 : 0.12, 0.17                            → Oi = 2
+                0.2–0.4 : 0.23, 0.31                            → Oi = 2
+                0.4–0.6 : 0.45, 0.47, 0.53, 0.56, 0.56, 0.58    → Oi = 6
+                0.6–0.8 : 0.69                                  → Oi = 1
+                0.8–1.0 : 0.81, 0.82, 0.83, 0.83, 0.91          → Oi = 5
+
+            Step 4: Expected frequency (Ei) = N / k = 16 / 5 = 3.2
+
+            Step 5: Compare Observed and Expected frequencies:
+
+                0.0–0.2 : Oi = 2, Ei = 3.2, Difference = -1.2
+                0.2–0.4 : Oi = 2, Ei = 3.2, Difference = -1.2
+                0.4–0.6 : Oi = 6, Ei = 3.2, Difference = +2.8
+                0.6–0.8 : Oi = 1, Ei = 3.2, Difference = -2.2
+                0.8–1.0 : Oi = 5, Ei = 3.2, Difference = +1.8
+
+            Step 6: Observation
+                - Numbers are unevenly distributed.
+                - Interval 0.4–0.6 has too many values; 0.6–0.8 has very few.
+            
+            Hence : Numbers are not uniformly distributed. A better random number generator should be used for accurate results.
+
+
+
+Question 5 (Chi-Square Test): Test whether the following 10 random numbers are uniformly distributed between 0 and 1 or not.
+                              Random numbers: 0.12, 0.25, 0.36, 0.52, 0.73, 0.45, 0.62, 0.81, 0.95, 0.33
+                              (At 5% significance level, χ² table value for v = 4 is 9.49)
+
+        Solution:
+
+            Step 1: Divide the range (0–1) into equal intervals
+                We will make 5 equal intervals (each of width 0.2):
+
+                Interval        Range         Observed (Oi)
+                ------------------------------------------------
+                1               0.0 – 0.2     1
+                2               0.2 – 0.4     3
+                3               0.4 – 0.6     2
+                4               0.6 – 0.8     2
+                5               0.8 – 1.0     2
+
+                Total (N) = 10
+
+            Step 2: Calculate Expected Frequency (Ei)
+                Expected frequency = N / number of intervals  
+                Ei = 10 / 5 = 2
+
+            Step 3: Apply Chi-Square Formula
+                χ² = Σ((Oi - Ei)² / Ei)
+
+                Calculation:
+                ------------------------------------------------
+                Interval | Oi | Ei | (Oi - Ei)² / Ei
+                ------------------------------------------------
+                1        | 1  | 2  | (1-2)²/2 = 0.5
+                2        | 3  | 2  | (3-2)²/2 = 0.5
+                3        | 2  | 2  | (2-2)²/2 = 0
+                4        | 2  | 2  | (2-2)²/2 = 0
+                5        | 2  | 2  | (2-2)²/2 = 0
+
+                Total χ² = 0.5 + 0.5 + 0 + 0 + 0 = 1.0
+
+            Step 4: Compare with Table Value
+                Degrees of freedom (v) = k - 1 = 5 - 1 = 4  
+                At 5% significance level, χ² table value for v = 4 is 9.49
+
+            Step 5: Decision
+                Calculated χ² = 1.0  
+                Table χ² = 9.49  
+
+                Since 1.0 < 9.49 (Accept Null Hypothesis)
+
+
+            Thus, the given random numbers are uniformly distributed.
+
+
+Question 6 (Chi-Square Test) :  Test whether the following 20 random numbers (between 0 and 1) are uniformly distributed.
+
+                                Observed counts in 5 equal intervals (width = 0.2):
+                                Interval 1 (0.0–0.2): 3  
+                                Interval 2 (0.2–0.4): 5  
+                                Interval 3 (0.4–0.6): 4  
+                                Interval 4 (0.6–0.8): 4  
+                                Interval 5 (0.8–1.0): 4  
+                                Total (N) = 20
+        Solution: 
+
+            Step 1: Expected frequency for each interval
+                Ei = N / number of intervals = 20 / 5 = 4
+
+            Step 2: Calculate Chi-square value (χ²)
+                χ² = Σ((Oi - Ei)² / Ei)
+
+                Interval | Oi | Ei | (Oi - Ei)² / Ei  
+                -------------------------------------  
+                1        |  3 |  4 | (3 - 4)² / 4 = 1 / 4 = 0.25  
+                2        |  5 |  4 | (5 - 4)² / 4 = 1 / 4 = 0.25  
+                3        |  4 |  4 | (4 - 4)² / 4 = 0  
+                4        |  4 |  4 | 0  
+                5        |  4 |  4 | 0  
+
+                Total χ² = 0.25 + 0.25 = 0.50
+
+            Step 3: Find the table value
+                Number of intervals (k) = 5  
+                Degrees of freedom (v) = k - 1 = 4  
+                At 5% significance level, χ² table value = 9.49
+
+            Step 4: Decision
+                Calculated χ² = 0.50  
+                Table value = 9.49  
+                Since 0.50 < 9.49 (Accept the Null Hypothesis).
+
+            Step 5: Null Hypothesis (H₀)
+                The given random numbers are uniformly distributed.
+
+
+
+Question 7 (Poker Test) :
+
+        A sequence of 10,000 random numbers, each of four digits has been generated. 
+        The analysis of the numbers reveals that in 5120 numbers all four digits are different, 
+        4230 contain exactly one pair of like digits, 560 contain two pairs, 
+        75 have three digits of a kind and 15 contain all like digits. 
+        Use Poker test to determine whether these numbers are independent. 
+        (Critical value of chi-square test for α=0.05 and N=4 is 9.49). 
+
+    Solution:
+        Given:
+            - Total numbers (N) = 10,000  
+            - Observed frequencies:
+                • All digits different: 5120  
+                • One pair: 4230  
+                • Two pairs: 560  
+                • Three of a kind: 75  
+                • Four of a kind: 15  
+        - Significance level: α = 0.05  
+        - Degrees of freedom: N = 4  
+        - Chi-Square critical value: χ²0.05,4 = 9.49  
+
+        Step 1: Find theoretical probabilities (Pi) for each pattern
+            - All digits different: P1 = (10/10) × (9/10) × (8/10) × (7/10) = 0.504  
+            - One pair:             P2 = 0.432  
+            - Two pairs:            P3 = 0.027  
+            - Three of a kind:      P4 = 0.036  
+            - Four of a kind:       P5 = 0.001  
+
+        Step 2: Calculate expected frequencies (Ei)
+            Ei = N × Pi  
+
+            - All digits different: E1 = 10,000 × 0.504 = 5040  
+            - One pair:             E2 = 10,000 × 0.432 = 4320  
+            - Two pairs:            E3 = 10,000 × 0.027 = 270  
+            - Three of a kind:      E4 = 10,000 × 0.036 = 360  
+            - Four of a kind:       E5 = 10,000 × 0.001 = 10  
+
+        Step 3: Compute Chi-Square (χ²) statistic
+            χ² = Σ ((Oi - Ei)² / Ei)  
+
+            - All digits different: (5120 - 5040)² / 5040 = 80² / 5040 ≈ 1.27  
+            - One pair: (4230 - 4320)² / 4320 = (-90)² / 4320 ≈ 1.88  
+            - Two pairs: (560 - 270)² / 270 = 290² / 270 ≈ 311.48  
+            - Three of a kind: (75 - 360)² / 360 = (-285)² / 360 ≈ 225.63  
+            - Four of a kind: (15 - 10)² / 10 = 5² / 10 = 2.5  
+
+            Total χ² = 1.27 + 1.88 + 311.48 + 225.63 + 2.5 ≈ 542.76  
+
+        Step 4: Compare with critical value
+            - χ² calculated = 542.76  
+            - χ² table = 9.49  
+
+        Step 5: Conclusion
+            - Since 542.76 > 9.49, we reject the null hypothesis.  
+            - This means the numbers are not independent and do not follow perfect randomness.
+
+Question 8 (Poker Test for Three-Digit Random Numbers):
+
+            A sequence of 20 random numbers, each with three digits, has been generated:
+            123, 112, 345, 121, 333, 456, 211, 222, 321, 543, 334, 122, 444, 543, 234, 111, 321, 112, 233, 345.
+            Use the Poker Test to determine whether these numbers are independent.
+            (Critical value of chi-square for α = 0.05 and N = 3 is 5.99)
+
+        Solution:
+            Given sequence of 20 three-digit numbers,
+            123, 112, 345, 121, 333, 456, 211, 222, 321, 543, 334, 122, 444, 543, 234, 111, 321, 112, 233, 345
+
+            Step 1: Classification based on digit repetition
+                - All different digits
+                - One pair of like digits
+                - Three of a kind
+
+            Step 2: Observed frequencies
+                All different digits = 9
+                One pair = 7
+                Three of a kind = 4
+                Total = 20
+
+            Step 3: Probabilities for 3-digit numbers
+                Probability(All different) = 720 / 1000 = 0.72
+                Probability(One pair) = 270 / 1000 = 0.27
+                Probability(Three of a kind) = 10 / 1000 = 0.01
+
+            Step 4: Expected frequencies
+                Expected(All different) = 20 × 0.72 = 14.4
+                Expected(One pair) = 20 × 0.27 = 5.4
+                Expected(Three of a kind) = 20 × 0.01 = 0.2
+
+            Step 5: Chi-square calculation
+                Formula: χ² = Σ ((Oi − Ei)² / Ei)
+
+                All different: (9 − 14.4)² / 14.4 = 2.844
+                One pair: (7 − 5.4)² / 5.4 = 0.476
+                Three of a kind: (4 − 0.2)² / 0.2 = 72.2
+
+                Total χ² = 2.844 + 0.476 + 72.2 = 74.70
+
+            Step 6: Comparison with critical value
+                Degrees of freedom = 3 − 1 = 2
+                Critical χ² at α = 0.05 and df = 2 = 5.99
+
+            Step 7: Conclusion
+                Since 74.70 > 5.99, reject the null hypothesis.
+                The sequence is not independent.
